@@ -1,0 +1,23 @@
+version: '3'
+services:
+  eaasui:
+    build: .
+    links:
+      - eaassrv
+    ports:
+      - 7000:80
+    depends_on:
+      - eaassrv
+
+  eaassrv:
+    image: ticnspadmin/ticnsp_eaas_srv
+    links:
+      - eaasdb
+    environment:
+      MONGO_URL: "mongodb://eaasdb/ticnsp_evangelio"
+      LOG_LEVEL: "debug"
+    depends_on:
+      - eaasdb
+
+  eaasdb:
+    image: mongo
