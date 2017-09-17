@@ -5,13 +5,17 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { Reading } from './reading/reading.component';
+import { LiturgicTitle } from './liturgicTitle/liturgicTitle.component';
 
 import { MaterialModule } from './app.material.module';
 import { MdNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Reading,
+    LiturgicTitle
   ],
   imports: [
     BrowserModule,

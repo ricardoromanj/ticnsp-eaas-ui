@@ -3,11 +3,11 @@
 </div>
 
 
-<div class="container">
+<div class="container my-4">
 	<div class="row my-2">
-		<div class='col'>
-		<md-card>
-		<md-card-content>
+	  <div class='col-sm-1 col-md-2'>
+		</div>
+		<div class='col-xs-12 col-sm-10 col-md-8'>
 			<form>
 				<md-select (change)="langChanged()" placeholder="Language" [(ngModel)]="lang" name="lang">
 					<md-option *ngFor="let langOpt of langOpts" [value]="langOpt.code">{{ langOpt.name }}</md-option>
@@ -18,47 +18,30 @@
 					<md-datepicker (selectedChanged)="dateChanged($event)" #picker></md-datepicker>
 				</md-form-field>
 			</form>
-			</md-card-content>
-			</md-card>
+			<liturgic-title [title]="liturgy.content.liturgicTitle" [saint]="liturgy.content.saint"></liturgic-title>
+			<reading [readingTitle]="liturgy.content.fr.lt" [readingText]="liturgy.content.fr.text"></reading>
+			<reading [readingTitle]="liturgy.content.ps.lt" [readingText]="liturgy.content.ps.text"></reading>
+			<div class="row" *ngIf="showSr">
+				<div class="col">
+					<reading [readingTitle]="liturgy.content.sr.lt" [readingText]="liturgy.content.sr.text"></reading>
+				</div>
+			</div>
+			<reading [readingTitle]="liturgy.content.gsp.lt" [readingText]="liturgy.content.gsp.text"></reading>
 		</div>
 	</div>
-	<div class="row my-2">
-		<div class="col">
-			<h1>{{ liturgy.content.liturgicTitle }}</h1>
-		</div>
-	</div>
-	<div class='row'>
-		<div class="col">
-			<h3>Saint: {{ liturgy.content.saint }}</h3>
-		</div>
-	</div>
+</div>
 
-	<div class='row'>
-		<div class="col">
-			<h3>First Reading: {{ liturgy.content.fr.lt }}</h3>
-			<p>{{ liturgy.content.fr.text }}<p>
-		</div>
-	</div>
 
-	<div class="row">
-		<div class="col">
-			<h3>Psalm: {{ liturgy.content.ps.lt }}</h3>
-			<p>{{ liturgy.content.ps.text }}<p>
-		</div>
+<footer class="mdl-mini-footer">
+	<div class="mdl-mini-footer__left-section">
+		<div class="mdl-logo">Evangelio</div>
+		<ul class="mdl-mini-footer__link-list">
+			<li><a href="http://ticnsp.org">TICNSP.org</a></li>
+		</ul>
 	</div>
-
-	<div class="row" *ngIf="showSr">
-		<div class="col">
-			<h3>Second Reading: {{ liturgy.content.sr.lt }}</h3>
-			<p>{{ liturgy.content.sr.text }}<p>
-		</div>
+	<div class="mdl-mini-footer__right-section">
+		<ul class="mdl-mini-footer__link-list">
+			<li>2017 &copy; El plagio es pecado</li>
+		</ul>
 	</div>
-
-	<div class="row">
-		<div class="col">
-			<h3>Gospel: {{ liturgy.content.gsp.lt }}</h3>
-			<p>{{ liturgy.content.gsp.text }}</p>
-		</div>
-	</div>
-	<div>
-
+</footer>
